@@ -15,13 +15,13 @@ class DepartmentsTableSeeder extends Seeder
         \App\Department::create([
             'title' => 'Plumber',
             'details' => 'Some quick example text to build on the card title and',
-            'thumbnail' => 'plumber.jpp'
+            'thumbnail' => 'plumber.jpg'
         ]);
 
         \App\Department::create([
             'title' => 'Electrician',
             'details' => 'Some quick example text to build on the card title and',
-            'thumbnail' => 'electrician.jpp'
+            'thumbnail' => 'electrician.jpg'
         ]);
 
         \App\Department::create([
@@ -33,13 +33,13 @@ class DepartmentsTableSeeder extends Seeder
         \App\Department::create([
             'title' => 'Mechanic',
             'details' => 'Some quick example text to build on the card title and',
-            'thumbnail' => 'mechanic.jpp'
+            'thumbnail' => 'mechanic.jpg'
         ]);
 
         \App\Department::create([
             'title' => 'Painter',
             'details' => 'Some quick example text to build on the card title and',
-            'thumbnail' => 'painter.jpp'
+            'thumbnail' => 'painter.jpg'
         ]);
     }
 }
