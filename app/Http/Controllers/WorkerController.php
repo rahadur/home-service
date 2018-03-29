@@ -12,7 +12,7 @@ class WorkerController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
 
     public function index()
     {
@@ -38,4 +38,5 @@ class WorkerController extends Controller
 
         return redirect('/admin/Workers');
     }
+    
 }

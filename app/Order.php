@@ -24,4 +24,10 @@ class Order extends Model
     {
         return $this->belongsTo(\App\Location::class);
     }
+
+
+    public function notifications()
+    {
+        return $this->hasMany(\App\Notification::class);
+    }
 }

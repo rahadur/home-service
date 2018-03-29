@@ -47,6 +47,13 @@ class User extends Authenticatable
     }
 
 
+    public function notifications()
+    {
+        return $this->hasMany(\App\Notification::class);
+    }
+
+
+
 
     public function authorizeRole($roles)
     {

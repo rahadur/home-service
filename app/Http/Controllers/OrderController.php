@@ -50,6 +50,8 @@ class OrderController extends Controller
             'trx_no' => 'required|unique:orders'
         ]);
 
+
+        //
         $order = new \App\Order;
 
         $order->user_id = $request->user()->id;
@@ -60,9 +62,29 @@ class OrderController extends Controller
 
         $order->save();
 
+
+
+        $users = \App\User::whereHas('roles', function($q) {
+
+            $q->where('name', 'worker')
+              ->where('location_id', request()->input('location_id'));
+
+          })->get();
+
+
+          foreach ($users as $user) {
+            $order->notifications()->create([
+                'user_id' => $user->id
+            ]);
+          }
+
+
+
+
+
         $request->session()->forget('package_id');
 
-        return redirect('/');
+        return redirect('/users/dashboard');
 
     }
 
