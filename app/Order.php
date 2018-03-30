@@ -14,6 +14,13 @@ class Order extends Model
     }
 
 
+    public function worker()
+    {
+        return $this->belongsTo(\App\User::class, 'worke_id');
+    }
+
+
+
     public function package()
     {
         return $this->belongsTo(\App\Package::class);

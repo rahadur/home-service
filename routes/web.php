@@ -30,8 +30,10 @@ Route::prefix('admin')->group(function() {
     Route::match(['put', 'patch'], 'packages/{id}', 'PackageController@update');
     Route::delete('packages/{id}', 'PackageController@destroy');
 
+    Route::get('orders', 'OrderController@index');
 
     Route::get('workers', 'WorkerController@index');
+
 
     Route::get('customers', 'CustomerController@index');
 
@@ -44,6 +46,7 @@ Route::prefix('users')->group(function(){
 
 Route::prefix('workers')->group(function(){
     Route::get('dashboard', 'WorkerController@dashboard');
+    Route::get('works', 'WorkerController@work');
 });
 
 // Packages Route
@@ -58,3 +61,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('orders/checkout', 'OrderController@hire');
 Route::get('orders/checkout', 'OrderController@checkout');
 Route::post('orders', 'OrderController@store');
+Route::match(['put', 'patch'], 'orders/accept', 'OrderController@accept');

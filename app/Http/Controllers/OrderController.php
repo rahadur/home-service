@@ -14,6 +14,14 @@ class OrderController extends Controller
 
 
 
+    public function index()
+    {
+        $orders = \App\Order::all();
+
+        return view('order.index', compact('orders'));
+    }
+
+
     public function checkout()
     {
       if (is_null(session('package_id'))) {
@@ -80,12 +88,29 @@ class OrderController extends Controller
 
 
 
-
-
         $request->session()->forget('package_id');
 
         return redirect('/users/dashboard');
 
+    }
+
+
+
+
+    public function accept()
+    {
+        $order = \App\Order::find(request()->input('order_id'));
+
+        $order->worker_id = request()->input('worker_id');
+        $order->status = 1;
+
+        $order->save();
+
+
+        \App\Notification::where('order_id', request()->input('order_id'))->delete();
+
+
+        dd($order);
     }
 
 

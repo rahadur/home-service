@@ -55,7 +55,7 @@ class User extends Authenticatable
 
 
 
-    public function authorizeRole($roles)
+    public function authorizeRoles($roles)
     {
         if (is_array($roles)) {
           if (!is_null($this->hasAnyRole($roles)))
