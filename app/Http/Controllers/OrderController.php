@@ -37,6 +37,14 @@ class OrderController extends Controller
 
 
 
+    public function cancel()
+    {
+        request()->session()->forget('package_id');
+
+        return redirect('/');
+    }
+
+
 
     public function hire(Request $request)
     {
@@ -101,16 +109,18 @@ class OrderController extends Controller
     {
         $order = \App\Order::find(request()->input('order_id'));
 
-        $order->worker_id = request()->input('worker_id');
-        $order->status = 1;
+        if ($order->status >= 0) {
+          
+          $order->worker_id = request()->input('worker_id');
+          $order->status = 1;
 
-        $order->save();
+          $order->save();
+
+          \App\Notification::where('order_id', request()->input('order_id'))->delete();
+        }
 
 
-        \App\Notification::where('order_id', request()->input('order_id'))->delete();
-
-
-        dd($order);
+        return redirect('/workers/works');
     }
 
 

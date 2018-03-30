@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
+          <a class="nav-link" href="/about">About Us</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
@@ -26,6 +26,14 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    @if(request()->user()->hasRole('admin'))
+                      <a class="dropdown-item" href="/admin/dashboard">Dashboard</a>
+                    @elseif(request()->user()->hasRole('worker'))
+                      <a class="dropdown-item" href="/workers/dashboard">Dashboard</a>
+                    @else
+                        <a class="dropdown-item" href="/users/dashboard">Dashboard</a>
+                    @endif
 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();

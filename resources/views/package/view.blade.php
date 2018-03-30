@@ -23,11 +23,16 @@
 
         <!-- <button type="button" class="btn btn-primary">Hire Now</button> -->
 
-        <a class="btn btn-primary" href="/orders/checkout"
+        <a class="btn btn-info" href="/orders/checkout"
            onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
+                         document.getElementById('order-form').submit();">
             {{ __('Hire Now') }}
         </a>
+
+        <form id="order-form" action="/orders/checkout" method="POST" style="display: none;">
+            @csrf
+            <input type="hidden" name="package_id" value="{{$package->id}}">
+        </form>
 
 
       </div>

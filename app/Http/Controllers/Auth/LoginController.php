@@ -42,9 +42,9 @@ class LoginController extends Controller
 
     public function authenticated()
     {
-        if (request()->user()->authorizeRole('admin')) {
+        if (request()->user()->authorizeRoles('admin')) {
           return redirect('/admin/dashboard');
-        } elseif (request()->user()->authorizeRole('worker')) {
+        } elseif (request()->user()->authorizeRoles('worker')) {
           return redirect('/workers/dashboard');
         }else{
           return redirect('/users/dashboard');

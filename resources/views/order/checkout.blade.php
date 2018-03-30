@@ -73,7 +73,7 @@
                       <div class="row">
                         <div class="col-md-9 offset-md-3">
                           <button class="btn btn-success">Confirm Order</button>
-                          <button class="btn btn-danger">Cancel Order</button>
+                          <a href="/orders/cancel" class="btn btn-danger">Cancel Order</a>
                         </div>
                       </div>
                   </div>

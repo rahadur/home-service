@@ -17,8 +17,13 @@ Route::get('/', function () {
 
     return view('pages.index', ['departments' => $departments]);
 });
-Route::get('departments/{id}/{name}', 'DepartmentController@packages')
-->where('name', '[A-Za-z]+');
+
+Route::get('about', function() {
+
+  return view('pages.about');
+});
+
+
 
 // Admin Routs
 Route::prefix('admin')->group(function() {
@@ -49,16 +54,23 @@ Route::prefix('workers')->group(function(){
     Route::get('works', 'WorkerController@work');
 });
 
-// Packages Route
 
-Route::get('packages/{id}/{slug}', 'PackageController@view');
+
+Route::get('departments/{id}/{name}', 'DepartmentController@packages')
+->where('name', '[A-Za-z]+');
 
 Auth::routes();
+
+// Packages Route
+Route::get('packages/{id}/{slug}', 'PackageController@view');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::post('orders/checkout', 'OrderController@hire');
 Route::get('orders/checkout', 'OrderController@checkout');
+Route::get('orders/cancel', 'OrderController@cancel');
 Route::post('orders', 'OrderController@store');
 Route::match(['put', 'patch'], 'orders/accept', 'OrderController@accept');
