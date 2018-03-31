@@ -42,12 +42,26 @@ Route::prefix('admin')->group(function() {
 
     Route::get('customers', 'CustomerController@index');
 
+
+
+    Route::get('problems', 'ProblemController@adminProblem');
+
 });
+
+
 
 
 Route::prefix('users')->group(function(){
     Route::get('dashboard', 'UserController@dashboard');
+
+    Route::get('problems', 'ProblemController@index');
+    Route::get('problems/create', 'ProblemController@create');
+    Route::post('problems', 'ProblemController@store');
 });
+
+
+
+
 
 Route::prefix('workers')->group(function(){
     Route::get('dashboard', 'WorkerController@dashboard');
