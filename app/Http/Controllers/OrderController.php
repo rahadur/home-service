@@ -109,8 +109,8 @@ class OrderController extends Controller
     {
         $order = \App\Order::find(request()->input('order_id'));
 
-        if ($order->status >= 0) {
-          
+        if ($order->status <= 0) {
+
           $order->worker_id = request()->input('worker_id');
           $order->status = 1;
 
