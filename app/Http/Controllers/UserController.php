@@ -16,8 +16,19 @@ class UserController extends Controller
 
     public function dashboard()
     {
-      $orders = \App\Order::where('user_id', request()->user()->id)->with('package')->get();
+      $orders = \App\Order::where('user_id', request()->user()->id)
+                ->where('status', 0)->with('package')->get();
 
       return view('user.dashboard', compact('orders'));
+    }
+
+
+
+    public function order()
+    {
+      $orders = \App\Order::where('user_id', request()->user()->id)
+                ->where('status', 1)->with('package')->get();
+
+      return view('user.order', compact('orders'));
     }
 }

@@ -8,7 +8,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/users/order">
           <span data-feather="file"></span>
           Orders
         </a>
@@ -31,7 +31,7 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/users/profile">
           <span data-feather="file-text"></span>
           Profile
         </a>

@@ -46,17 +46,25 @@ Route::prefix('admin')->group(function() {
 
     Route::get('problems', 'ProblemController@adminProblem');
 
+    Route::get('profile', 'ProfileController@admin');
+
 });
 
 
 
 
 Route::prefix('users')->group(function(){
-    Route::get('dashboard', 'UserController@dashboard');
+  Route::get('dashboard', 'UserController@dashboard');
+
+    Route::get('order', 'UserController@order');
 
     Route::get('problems', 'ProblemController@index');
     Route::get('problems/create', 'ProblemController@create');
     Route::post('problems', 'ProblemController@store');
+
+
+    Route::get('profile', 'ProfileController@user');
+
 });
 
 
@@ -66,6 +74,9 @@ Route::prefix('users')->group(function(){
 Route::prefix('workers')->group(function(){
     Route::get('dashboard', 'WorkerController@dashboard');
     Route::get('works', 'WorkerController@work');
+
+    Route::get('profile', 'ProfileController@worker');
+
 });
 
 
