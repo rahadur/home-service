@@ -36,11 +36,11 @@
       <td>
         <a class="btn btn-info" href="/orders/accept"
            onclick="event.preventDefault();
-                         document.getElementById('accept-form').submit();">
+                         document.getElementById('accept-form-{{$notification->order->id}}').submit();">
             {{ __('Accept') }}
         </a>
 
-        <form id="accept-form" action="/orders/accept" method="POST" style="display: none;">
+        <form id="accept-form-{{$notification->order->id}}" action="/orders/accept" method="POST" style="display: none;">
             @csrf
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="order_id" value="{{$notification->order->id}}">

@@ -57,6 +57,8 @@ Route::prefix('users')->group(function(){
   Route::get('dashboard', 'UserController@dashboard');
 
     Route::get('order', 'UserController@order');
+    Route::post('orders/destroy', 'OrderController@destroy');
+    Route::post('orders/complete', 'OrderController@complete');
 
     Route::get('problems', 'ProblemController@index');
     Route::get('problems/create', 'ProblemController@create');

@@ -21,6 +21,7 @@
       <th scope="col">Price</th>
       <th scope="col">Location</th>
       <th scope="col">Created</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -42,7 +43,21 @@
         @endif
 
       </td>
-
+      <td>
+        @if($order->status <= 0)
+        <form onsubmit="return confirm('Do you really want to cancel?');" action="/users/orders/destroy" method="POST" >
+            {{ csrf_field() }}
+            <input type="hidden" name="order_id" value="{{ $order->id }}" />
+            <button type="submit" class="btn btn-sm btn-danger">Cancel</button>
+        </form>
+        @else
+        <form onsubmit="return confirm('Do you really want to complete?');" action="/users/orders/complete" method="POST" >
+            {{ csrf_field() }}
+            <input type="hidden" name="order_id" value="{{ $order->id }}" />
+            <button type="submit" class="btn btn-sm btn-success">Complete</button>
+        </form>
+        @endif
+      </td>
 
     </tr>
     @endforeach

@@ -41,7 +41,7 @@ class PackageController extends Controller
 
         Package::create($request->all());
 
-        return redirect('/packages');
+        return redirect('/admin/packages');
     }
 
 

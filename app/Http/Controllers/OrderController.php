@@ -22,6 +22,9 @@ class OrderController extends Controller
     }
 
 
+
+
+
     public function checkout()
     {
       if (is_null(session('package_id'))) {
@@ -37,12 +40,16 @@ class OrderController extends Controller
 
 
 
+
+
     public function cancel()
     {
         request()->session()->forget('package_id');
 
         return redirect('/');
     }
+
+
 
 
 
@@ -63,7 +70,7 @@ class OrderController extends Controller
             'package_id' => 'required|numeric',
             'location_id' => 'required|numeric',
             'address' => 'required',
-            'trx_no' => 'required|unique:orders'
+            'phone' => 'numeric|required|digits:11'
         ]);
 
 
@@ -74,7 +81,7 @@ class OrderController extends Controller
         $order->package_id = $request->input('package_id');
         $order->location_id = $request->input('location_id');
         $order->address = $request->input('address');
-        $order->trx_no = $request->input('trx_no');
+        $order->phone = $request->input('phone');
 
         $order->save();
 
@@ -123,6 +130,32 @@ class OrderController extends Controller
         return redirect('/workers/works');
     }
 
+
+
+    public function destroy()
+    {
+        $order = \App\Order::find(request()->input('order_id'));
+
+        $order->notifications()->delete();
+
+        $order->delete();
+
+        return redirect('users/dashboard');
+
+    }
+
+
+
+    public function complete()
+    {
+        $order = \App\Order::find(request()->input('order_id'));
+
+        $order->status = 2;
+
+        $order->save();
+
+        return redirect('/users/order');
+    }
 
 
 }

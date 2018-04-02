@@ -10,6 +10,7 @@
             <h6>Checkout</h6>
           </div>
           <div class="card-body">
+              @include('layouts.errors')
               <div class="row">
                   <div class="col col-md-3">
                       <p class="text-right">Package Name</p>
@@ -62,9 +63,9 @@
 
                   <div class="form-group">
                     <div class="row">
-                        <label for="trx_id" class="control-label col-md-3 text-right">bKash Trx. No</label>
+                        <label for="trx_id" class="control-label col-md-3 text-right">Phone</label>
                         <div class="col-md-9">
-                          <input type="text" name="trx_no" class="form-control" required>
+                          <input type="number" name="phone" class="form-control" required>
                         </div>
                     </div>
                   </div>

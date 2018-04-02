@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('package_id')->unsigned();
             $table->integer('location_id')->unsigned();
             $table->text('address');
-            $table->string('trx_no')->unique();
+            $table->string('phone');
             $table->integer('status')->unsigned()->default(0);
             $table->timestamps();
         });
