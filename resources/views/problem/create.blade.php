@@ -28,6 +28,8 @@
 
               {{ csrf_field() }}
 
+              <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+
 
               <div class="form-group">
                 <div class="row">

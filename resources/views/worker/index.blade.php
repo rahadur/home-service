@@ -30,7 +30,7 @@
       <td>{{ $worker->created_at->toFormattedDateString() }}</td>
       <td>
         <div class="btn-group" role="group">
-          <a href="/admin/workers/{{$worker->id}}" type="button" class="btn btn-sm btn-success">View</a>
+          <!-- <a href="/admin/workers/{{$worker->id}}" type="button" class="btn btn-sm btn-success">View</a> -->
           <form onsubmit="return confirm('Do you really want to delete?');" action="/admin/workers/{{$worker->id}}" method="POST" >
   {{ csrf_field() }}
   <input type="hidden" name="_method" value="DELETE" />

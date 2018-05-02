@@ -9,7 +9,7 @@ class Problem extends Model
     //
 
     protected $fillable = [
-        'department_id', 'location_id', 'title', 'description'
+        'user_id', 'department_id', 'location_id', 'title', 'description'
     ];
 
 
@@ -23,5 +23,11 @@ class Problem extends Model
     public function location()
     {
         return $this->belongsTo('App\Location');
+    }
+
+
+    public function replies()
+    {
+        return $this->hasMany(ProblemReply::class);
     }
 }

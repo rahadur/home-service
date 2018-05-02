@@ -21,9 +21,20 @@ class ProblemController extends Controller
     public function index()
     {
 
-        $problems = Problem::all();
+        $problems = Problem::where('user_id', auth()->user()->id)
+          ->orderBy('created_at', 'desc')->get();
 
         return view('problem.index', compact('problems'));
+    }
+
+
+
+
+    public function show($id)
+    {
+        $problem = Problem::find($id);
+
+        return view('problem.show', compact('problem'));
     }
 
 
@@ -57,10 +68,19 @@ class ProblemController extends Controller
 
     public function adminProblem()
     {
-        $problems = Problem::all();
+        $problems = Problem::orderBy('created_at', 'desc')->get();
 
         return view('problem.admin_problem', compact('problems'));
     }
+
+
+    public function adminShow($id)
+    {
+        $problem = Problem::find($id);
+
+        return view('problem.admin_show', compact('problem'));
+    }
+
 
 
 }

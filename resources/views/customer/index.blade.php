@@ -30,12 +30,12 @@
       <td>{{ $customers->created_at->toFormattedDateString() }}</td>
       <td>
         <div class="btn-group" role="group">
-          <a href="/admin/workers/{{$customers->id}}" type="button" class="btn btn-sm btn-success">View</a>
-          <form onsubmit="return confirm('Do you really want to delete?');" action="/admin/workers/{{$customers->id}}" method="POST" >
-  {{ csrf_field() }}
-  <input type="hidden" name="_method" value="DELETE" />
-  <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-  </form>
+          <!-- <a href="/admin/customers/{{$customers->id}}" type="button" class="btn btn-sm btn-success">View</a> -->
+          <form onsubmit="return confirm('Do you really want to delete?');" action="/admin/customers/{{$customers->id}}" method="POST" >
+            {{ csrf_field() }}
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
         </div>
       </td>
     </tr>

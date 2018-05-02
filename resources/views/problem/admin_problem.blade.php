@@ -34,6 +34,9 @@
       <td>{{ $problem->department->title }}</td>
       <td>{{ $problem->location->name }}</td>
       <td>{{ $problem->created_at->toFormattedDateString() }}</td>
+      <td>
+        <a href="/admin/problems/{{$problem->id}}" class="btn btn-info">View</a>
+      </td>
     </tr>
     @endforeach
 

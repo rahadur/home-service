@@ -19,7 +19,7 @@ class PackageController extends Controller
 
     public function index() {
 
-      $packages = Package::all();
+      $packages = Package::orderBy('title', 'asc')->get();
 
       return view('package.index', compact('packages'));
     }

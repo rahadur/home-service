@@ -18,7 +18,7 @@ class WorkerController extends Controller
     {
       $workers = \App\User::whereHas('roles', function($q) {
         $q->where('name', 'worker');
-      })->get();
+      })->orderBy('created_at', 'desc')->get();
 
       return view('worker.index', compact('workers'));
     }
@@ -44,7 +44,7 @@ class WorkerController extends Controller
 
         \App\User::destroy($id);
 
-        return redirect('/admin/Workers');
+        return redirect('/admin/workers');
     }
 
 }

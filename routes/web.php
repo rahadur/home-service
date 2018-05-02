@@ -25,6 +25,8 @@ Route::get('about', function() {
 
 
 
+
+
 // Admin Routs
 Route::prefix('admin')->group(function() {
     Route::get('dashboard  ', 'AdminController@dashboard');
@@ -38,13 +40,17 @@ Route::prefix('admin')->group(function() {
     Route::get('orders', 'OrderController@index');
 
     Route::get('workers', 'WorkerController@index');
+    Route::delete('workers/{id}', 'WorkerController@destroy');
 
 
     Route::get('customers', 'CustomerController@index');
+    Route::delete('customers/{id}', 'CustomerController@destroy');
 
 
 
     Route::get('problems', 'ProblemController@adminProblem');
+    Route::get('problems/{id}', 'ProblemController@adminShow');
+    Route::post('reply/create', 'ReplyController@adminCreate');
 
     Route::get('profile', 'ProfileController@admin');
 
@@ -61,8 +67,12 @@ Route::prefix('users')->group(function(){
     Route::post('orders/complete', 'OrderController@complete');
 
     Route::get('problems', 'ProblemController@index');
-    Route::get('problems/create', 'ProblemController@create');
     Route::post('problems', 'ProblemController@store');
+    Route::get('problems/{id}', 'ProblemController@show');
+    Route::get('problems/create', 'ProblemController@create');
+
+    Route::post('reply/create', 'ReplyController@create');
+
 
 
     Route::get('profile', 'ProfileController@user');

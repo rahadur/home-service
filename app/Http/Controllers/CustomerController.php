@@ -11,8 +11,16 @@ class CustomerController extends Controller
     {
         $customers = \App\User::whereHas('roles', function($q){
             $q->where('name', 'user');
-        })->get();
+        })->orderBy('created_at', 'desc')->get();
 
         return view('customer.index', compact('customers'));
+    }
+
+
+    public function destroy($id){
+
+        \App\User::destroy($id);
+
+        return redirect('/admin/customers');
     }
 }
