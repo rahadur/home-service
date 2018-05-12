@@ -28,7 +28,7 @@
             @if($reply->fromUser->id == auth()->user()->id)
               <p> <strong>Me:</strong> {{ $reply->message }}</p>
             @else
-            <?php $to_user = $reply->fromUser->id ?>
+                @php($to_user = $reply->fromUser->id)
               <p> <strong>Admin:</strong> {{ $reply->message }}</p>
             @endif
         </li>
@@ -38,19 +38,24 @@
     <hr>
     <h4>Send a message</h4>
 
-    <form action="/users/reply/create" method="post">
-       @csrf
-       <input type="hidden" name="problem_id" value="{{ $problem->id }}">
-       <input type="hidden" name="from_user_id" value="{{ auth()->user()->id }}">
-       <input type="hidden" name="to_user_id" value="{{ $to_user }}">
+      <hr>
 
-       <div class="form-group">
-         <textarea name="message" rows="3" class="form-control" placeholder="Write your message"></textarea>
-       </div>
+    @if(count($problem->replies) > 0)
+          <form action="/users/reply/create" method="post">
+              @csrf
+              <input type="hidden" name="problem_id" value="{{ $problem->id }}">
+              <input type="hidden" name="from_user_id" value="{{ auth()->user()->id }}">
+              <input type="hidden" name="to_user_id" value="{{ $problem->user_id }}">
 
-       <button type="submit" class="btn btn-success">Send Message</button>
-    </form>
+              <div class="form-group">
+                  <textarea name="message" rows="3" class="form-control" placeholder="Write your message"></textarea>
+              </div>
 
+              <button type="submit" class="btn btn-success">Send Message</button>
+          </form>
+    @else
+        <p>Admin is not reply yet.</p>
+    @endif
 
 
 

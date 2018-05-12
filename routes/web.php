@@ -68,8 +68,8 @@ Route::prefix('users')->group(function(){
 
     Route::get('problems', 'ProblemController@index');
     Route::post('problems', 'ProblemController@store');
-    Route::get('problems/{id}', 'ProblemController@show');
     Route::get('problems/create', 'ProblemController@create');
+    Route::get('problems/{id}', 'ProblemController@show');
 
     Route::post('reply/create', 'ReplyController@create');
 
